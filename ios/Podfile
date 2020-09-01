@@ -9,7 +9,7 @@ target 'productList' do
   use_react_native!(:path => config["reactNativePath"])
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons' 
-  
+  pod 'RNFBAuth', :path => '../node_modules/@react-native-firebase/auth'
   target 'productListTests' do
     inherit! :complete
     # Pods for testing

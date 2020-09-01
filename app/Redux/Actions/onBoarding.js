@@ -1,50 +1,63 @@
 // import axios from 'axios';
 
+import auth from '@react-native-firebase/auth';
 import { ACTION_TYPE } from './constants';
-import AsyncStorage from '@react-native-community/async-storage';
 
-export const login = (data) => async (dispatch) => {
-  console.log('login -> data', data);
+// Signup with email and password with firebase
+export const createUserWithEmailAndPassword = (email, password) => async (
+  dispatch,
+) => {
   try {
-    await AsyncStorage.setItem('loginDetails', JSON.stringify(data));
+    const response = await auth().createUserWithEmailAndPassword(
+      email,
+      password,
+    );
 
     dispatch({
       type: ACTION_TYPE.LOGIN,
-      payload: { response: 'Login Success', error: false },
+      payload: { response: response, error: false },
     });
   } catch (error) {
     dispatch({
       type: ACTION_TYPE.LOGIN,
-      payload: { response: 'Login Failed', error: true },
+      payload: { response: error, error: true },
     });
   }
 };
 
-export const isLoggedIn = () => async (dispatch) => {
-  try {
-    const response = await AsyncStorage.getItem('loginDetails');
+// Signup with email and password with firebase
+export const signInWithEmailAndPassword = (email, password) => {
+  return async (dispatch) => {
+    try {
+      const response = await auth().signInWithEmailAndPassword(email, password);
+      dispatch({
+        type: ACTION_TYPE.LOGIN,
+        payload: { response: response, error: false },
+      });
+    } catch (error) {
+      dispatch({
+        type: ACTION_TYPE.LOGIN,
+        payload: { response: error, error: true },
+      });
+    }
+  };
+};
 
-    dispatch({
-      type: ACTION_TYPE.IS_LOGIN,
-      payload: response
-        ? { response: 'Logged in', error: false }
-        : { response: 'Logged Out', error: true },
-    });
-  } catch (error) {
-    dispatch({
-      type: ACTION_TYPE.IS_LOGIN,
-      payload: { response: 'Logged Out', error: true },
-    });
-  }
+export const clearSignInProps = () => async (dispatch) => {
+  dispatch({
+    type: ACTION_TYPE.LOGIN,
+    payload: undefined,
+  });
 };
 
 export const logout = () => async (dispatch) => {
   try {
-    await AsyncStorage.removeItem('loginDetails');
+    // await AsyncStorage.removeItem('loginDetails');
 
+    const response = await auth().signOut();
     dispatch({
       type: ACTION_TYPE.LOGOUT,
-      payload: { response: 'Error White logging out', error: true },
+      payload: { response: 'Error White logging out', error: false },
     });
   } catch (error) {
     dispatch({
