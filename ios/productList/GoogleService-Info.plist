@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>592240851171-s6tktf9nlmpr5b8gsheil6mgev4eoan1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.592240851171-s6tktf9nlmpr5b8gsheil6mgev4eoan1</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>592240851171-ac07tf08nl99fo82qk1l7ka747996sbf.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD7LBfliJwcTtYx-1LxLfrNH2hdJwsj9mE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>592240851171</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.gaurav.productList</string>
+	<key>PROJECT_ID</key>
+	<string>reactnativerealtimechatapp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>reactnativerealtimechatapp.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:592240851171:ios:d4a6e90b920dc288936dd6</string>
+	<key>DATABASE_URL</key>
+	<string>https://reactnativerealtimechatapp.firebaseio.com</string>
+</dict>
+</plist>
