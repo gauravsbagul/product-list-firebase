@@ -2,22 +2,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
-
-import Splash from '../Screens/OnBoarding/Splash';
-import LoginOrSignup from '../Screens/OnBoarding/LoginOrSignup';
+import { StyleSheet, Text, View } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { connect } from 'react-redux';
+import ProdustList from '../Screens/Dashboard/ProdustList';
+import LoginOrSignup from '../Screens/OnBoarding/LoginOrSignup';
+import Splash from '../Screens/OnBoarding/Splash';
 
 const Tab = createBottomTabNavigator();
-
-const ProdustList = () => {
-  return (
-    <View style={styles.container}>
-      <Text>ProdustList</Text>
-    </View>
-  );
-};
 
 const CreateProduct = () => {
   return (
@@ -59,7 +51,7 @@ const TabNav = (props) => {
 
 const AuthStack = createStackNavigator();
 
-const StackNav = () => {
+const StackNav = (props) => {
   return (
     <NavigationContainer>
       <AuthStack.Navigator
@@ -67,7 +59,9 @@ const StackNav = () => {
           ...screenOptions,
         }}>
         <AuthStack.Screen name="Splash" component={Splash} />
+
         <AuthStack.Screen name="LoginOrSignup" component={LoginOrSignup} />
+
         <AuthStack.Screen name="TabNav" component={TabNav} />
       </AuthStack.Navigator>
     </NavigationContainer>

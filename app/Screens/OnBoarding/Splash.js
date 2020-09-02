@@ -1,34 +1,35 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 // In App.js in a new project
 
-import React, { useEffect } from 'react';
+import auth from '@react-native-firebase/auth';
+import { CommonActions } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
-// import { isLoggedIn } from '../../Redux/actions/auth';
-import { connect } from 'react-redux';
-
 const Splash = (props) => {
-  useEffect(() => {
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  const onAuthStateChanged = (user) => {
+    console.log('onAuthStateChanged -> user', user);
+    setUser(user);
     setTimeout(() => {
-      // props.isLoggedIn();
-      props.navigation.navigate('LoginOrSignup');
+      props.navigation.dispatch(
+        CommonActions.navigate({
+          name: user ? 'TabNav' : 'LoginOrSignup',
+        }),
+      );
     }, 2000);
+
+    if (initializing) setInitializing(false);
+  };
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
   }, []);
 
-  useEffect(() => {
-    // if (props.navigation.isFocused()) {
-    //     if (props.authentication.hasOwnProperty('isLogin')) {
-    //         if (
-    //             props.authentication.isLogin?.error &&
-    //             props.authentication.isLogin?.response === 'Logged Out'
-    //         ) {
-    //             props.navigation.navigate('Login');
-    //         } else {
-    //             props.navigation.replace('TabNav');
-    //         }
-    //     }
-    // }
-  }, [props]);
+  if (initializing) return null;
 
   return (
     <View style={styles.container}>
@@ -45,10 +46,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({}) => {
-  return {};
-};
 const mapDispatchToProps = {
   // isLoggedIn,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Splash);
+export default Splash;
