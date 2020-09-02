@@ -40,6 +40,7 @@ const AppProduct = (props) => {
           setProductName('');
           setProductPrice('');
           setImageUrl('');
+          Keyboard.dismiss();
           props.clearUploadProductProps();
           Alert.alert('Yoho!', 'Product added successfully', [{ text: 'OK' }], {
             cancelable: false,
@@ -47,6 +48,7 @@ const AppProduct = (props) => {
           setIsLoading(false);
         } else if (props.products?.uploadProduct?.error) {
           setIsLoading(false);
+          Keyboard.dismiss();
           props.clearUploadProductProps();
           Alert.alert(
             'Opps!',
@@ -109,15 +111,6 @@ const AppProduct = (props) => {
             </Text>
           )}
         </View>
-
-        <Button
-          transparent
-          onPress={() => selectProductImage()}
-          style={{ alignSelf: 'center', marginTop: 10 }}>
-          <Text uppercase={false} style={{ color: 'blue' }}>
-            Pick Product Image
-          </Text>
-        </Button>
 
         <View style={styles.inputWrapper}>
           <InputGroup style={styles.inputGroup}>
