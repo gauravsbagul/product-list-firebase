@@ -1,4 +1,4 @@
-# video-list
+# Product-list
 
 React Native application that renders list of Products with add Products, Signup an Login using firebase
 
