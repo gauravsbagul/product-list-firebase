@@ -8,6 +8,8 @@
     "start": "react-native start",
     "pod": "cd ios && npx pod-install && cd ..",
     "link": "react-native link",
+    "prebuild": "npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "build": "cd android && ./gradlew assembleDebug && cd ../",
     "test": "jest",
     "gradlewClean": "cd android && ./gradlew clean && cd ..",
     "lint": "eslint ."

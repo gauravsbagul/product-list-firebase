@@ -32,6 +32,7 @@ const initialState = {
   isLogin: true,
   email: '',
   password: '',
+  confirmPassword: '',
   hidePassword: true,
   hideConfirmPassword: true,
   isLoading: false,
