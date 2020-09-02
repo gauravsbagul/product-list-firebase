@@ -186,7 +186,7 @@ class LoginOrSignup extends Component {
                     keyboardType="default"
                     returnKeyType="go"
                     secureTextEntry={hidePassword}
-                    onSubmitEditing={isLogin ? () => this.handleLogin() : null}
+                    onSubmitEditing={() => this.handleLogin()}
                     placeholderTextColor="#000"
                     style={styles.inputText}
                     blurOnSubmit={false}

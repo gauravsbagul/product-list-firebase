@@ -17,7 +17,7 @@ const persistConfig = {
   timeout: 10000,
   key: 'root',
   storage: AsyncStorage,
-  whitelist: [],
+  whitelist: ['products'],
 };
 const args = __DEV__ ? [thunk, logger] : [thunk];
 
